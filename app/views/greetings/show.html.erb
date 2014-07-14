@@ -1,0 +1,13 @@
+<div>
+  <%= form_for @greeting, html:  {id: "newgreet"} do |form| %>
+  <%= form.label "message" %>
+  <%= form.text_field :body %>
+  <%= form.collection_select :receiver_id, @users, :id, :user_name %>
+  <%= form.submit "send" %>
+<% end %>
+</div>
+
+<h3>Yos </h3>
+<div id="greetings">
+<%= render @greetings %>
+</div >

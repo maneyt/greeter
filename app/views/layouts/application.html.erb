@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Greeter</title>
+  <title>Greetr</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script>
+     window.pusher_key = "<%= ENV.fetch("PUSHER_KEY") %>"
+     <% if current_user %>
+       window.pusher_channel = "<%= current_user.id %>"
+     <% end %>
+  </script>
 </head>
 <body>
+<% if signed_in? %>
+  Signed in as : <%= current_user.user_name %>
+  <%= button_to "Sign out", :session, method: :delete %>
+<% end %>
 
 <%= yield %>
+
+<script src="//js.pusher.com/2.2/pusher.min.js"></script>
 
 </body>
 </html>
