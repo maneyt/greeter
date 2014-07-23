@@ -2,7 +2,7 @@ $(function(){
 
   $("#newgreet").submit(function(){
     $.post("/greetings", $("#newgreet").serialize());
-    
+
     return false;
   });
 
